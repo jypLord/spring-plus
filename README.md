@@ -5,6 +5,15 @@
 상기한 조건을 안 넣을 수도 있다는 조건도 있었기 때문에 DTO에 디폴트 값을 설정해주는 메서드를 추가하였습니다.
 
 ```java
+public class GetTodoRequest {
+    private final String weather;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+
+    // weather 이 null 인지 검증
+    public boolean hasWeather(){
+        return this.weather != null;
+    }
     public LocalDate getStartDateOrDefault(){
         if(this.startDate==null){
              return LocalDate.parse("0000-01-01");
@@ -17,6 +26,8 @@
             return LocalDate.now();
         }
         return this.endDate;
+    }
+}
 ```
 링크: https://github.com/jypLord/spring-plus/blob/level-1-3/src/main/java/org/example/expert/domain/todo/dto/request/GetTodoRequest.java
 
