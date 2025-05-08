@@ -12,3 +12,4 @@ CommentController.
     @Query("SELECT c FROM Comment c JOIN FETCH c.user WHERE c.todo.id = :todoId")
     List<Comment> findByTodoIdWithUser(@Param("todoId") Long todoId);
 ```
+링크: https://github.com/jypLord/spring-plus/blob/level-2-2/src/main/java/org/example/expert/domain/comment/repository/CommentRepository.java
