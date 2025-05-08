@@ -21,6 +21,8 @@ public String createToken(Long userId, String email, UserRole userRole, String n
 
 - 프론트 뿐만 아니라 백엔드에서도 토큰 정보를 활용하기 위해 JWT 필터에 있는 JWT 토큰 정보 저장 로직에 아래를 추가했습니다.
 ```httpRequest.setAttribute("nickName" , nickName)```
+링크 : https://github.com/jypLord/spring-plus/blob/level-1-2/src/main/java/org/example/expert/config/JwtFilter.java
+
 
 - 또, 로그인한 유저의 정보를 자동으로 가져오기 위해 HandlerMethodArgumentResolver의 구현체와 커스텀 어노테이션 @Auth를 연동하여 같이 닉네임을 가져오기 위해 resolveArgument 에 다음을 추가했습니다.
    ```String nickName = (String) request.getAttribute("nickName");```
