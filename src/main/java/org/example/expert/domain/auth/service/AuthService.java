@@ -1,7 +1,7 @@
 package org.example.expert.domain.auth.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.expert.config.JwtUtil;
+import org.example.expert.config.security.JwtUtil;
 import org.example.expert.config.PasswordEncoder;
 import org.example.expert.domain.auth.dto.request.SigninRequest;
 import org.example.expert.domain.auth.dto.request.SignupRequest;
@@ -43,7 +43,7 @@ public class AuthService {
         );
         User savedUser = userRepository.save(newUser);
 
-        String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole, savedUser.getNickName());
+        String bearerToken = jwtUtil.createToken(savedUser.getId(), savedUser.getEmail(), userRole.name(), savedUser.getNickName());
 
         return new SignupResponse(bearerToken);
     }
@@ -57,7 +57,7 @@ public class AuthService {
             throw new AuthException("잘못된 비밀번호입니다.");
         }
 
-        String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole(), user.getNickName());
+        String bearerToken = jwtUtil.createToken(user.getId(), user.getEmail(), user.getUserRole().name(), user.getNickName());
 
         return new SigninResponse(bearerToken);
     }

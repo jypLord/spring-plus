@@ -1,9 +1,0 @@
-POST http://localhost:8080/signup
-Content-Type: application/json
-
-{
-  "email" : "jygoldn@naver.com",
-  "password" : "1234",
-  "userRole" : "USER",
-  "nickName" : "nickName"
-}
